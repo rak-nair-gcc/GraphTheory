@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GraphTheory
+﻿namespace GraphTheory
 {
     public class Common
     {
-        public class EdgeWithWeight
+        public interface IEdge
+        {
+            int FromNode { get; set; }
+            int ToNode { get; set; }
+        }
+
+        public class EdgeWithWeight : IEdge
         {
             public int FromNode { get; set; }
             public int ToNode { get; set; }
             public int Weight { get; set; }
+        }
+
+        public class Edge : IEdge
+        {
+            public int FromNode { get; set; }
+            public int ToNode { get; set; }
         }
     }
 }

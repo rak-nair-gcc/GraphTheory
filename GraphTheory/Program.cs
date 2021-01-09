@@ -41,10 +41,23 @@ namespace GraphTheory
 
             };
 
-            var kruskalAlgo = new KruskalAlgo(edgesForKruskal);
-            var minSpanTreeEdges = kruskalAlgo.GetMinSpanningTree();
-            var edgeSum = minSpanTreeEdges.Sum(x => x.Weight);
+            //var kruskalAlgo = new KruskalAlgo(edgesForKruskal);
+            //var minSpanTreeEdges = kruskalAlgo.GetMinSpanningTree();
+            //var edgeSum = minSpanTreeEdges.Sum(x => x.Weight);
 
+            var edgesForTopSort = new List<Common.Edge>()
+            {
+                new Common.Edge {FromNode = 5, ToNode = 0},
+                new Common.Edge {FromNode = 5, ToNode = 2},
+                new Common.Edge {FromNode = 0, ToNode = 2},
+                new Common.Edge {FromNode = 0, ToNode = 3},
+                new Common.Edge {FromNode = 3, ToNode = 1},
+                new Common.Edge {FromNode = 4, ToNode = 1},
+                new Common.Edge {FromNode = 4, ToNode = 2},
+            };
+
+            var topSort = new TopologicalSort(edgesForTopSort);
+            var resultFromTopSort = topSort.GetToplogicalSort();
         }
     }
 }
