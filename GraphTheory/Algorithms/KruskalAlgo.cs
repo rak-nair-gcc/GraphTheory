@@ -42,6 +42,5 @@ namespace GraphTheory.Algorithms
         {
             _edges.Sort(Comparer<EdgeWithWeight>.Create((x, y) => { return x.Weight.CompareTo(y.Weight); }));
         }
-
     }
 }

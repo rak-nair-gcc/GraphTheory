@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace GraphTheory.Algorithms
 {
     //Amortized O(1) per operation
+    //Used in  a. Kruskals Algo, b. Cycle Detection in Undirected graph.
     public class DisjointSet
     {
         Dictionary<int,TreeNode> _map = null;
@@ -45,7 +46,7 @@ namespace GraphTheory.Algorithms
         {
             GetParent(fromNode);
             GetParent(toNode);
-            return (fromNode.Parent!=null && fromNode.Parent == toNode.Parent);
+            return (fromNode.Parent == toNode.Parent);
         }
         //Combine sets, i.e. make parent of one pont to the other.
         void Unify(TreeNode fromNode, TreeNode toNode)
