@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphTheory.Algorithms
 {
+    //Amortized O(1) per operation
     public class DisjointSet
     {
         Dictionary<int,TreeNode> _map = null;
@@ -14,7 +15,7 @@ namespace GraphTheory.Algorithms
         {
             _map = new Dictionary<int, TreeNode>();
         }
-
+        //Every element is a set by itself
         void MakeSet(int val)
         {
             if (!_map.ContainsKey(val))
@@ -25,7 +26,7 @@ namespace GraphTheory.Algorithms
             }
 
         }
-
+        //Walk up tree and Get parent, also do path compression on the way back.
         TreeNode GetParent(TreeNode node)
         {
             if (node.Parent == node)
@@ -39,14 +40,14 @@ namespace GraphTheory.Algorithms
             MakeSet(fromVal);
             MakeSet(toVal);
         }
-
+        //Checks if both elements are in the same set
         bool IsInSameSet(TreeNode fromNode, TreeNode toNode)
         {
             GetParent(fromNode);
             GetParent(toNode);
             return (fromNode.Parent!=null && fromNode.Parent == toNode.Parent);
         }
-
+        //Combine sets, i.e. make parent of one pont to the other.
         void Unify(TreeNode fromNode, TreeNode toNode)
         {
             var fromParent = fromNode.Parent;
@@ -57,7 +58,7 @@ namespace GraphTheory.Algorithms
             else
                 SetParent(toParent, fromParent);
         }
-
+        
         void SetParent(TreeNode parent, TreeNode child)
         {
             child.Parent = parent;
@@ -65,7 +66,7 @@ namespace GraphTheory.Algorithms
                 parent.Rank++;
             child.Rank = 0;
         }
-
+        //Returns true if an edge can be added without creating a cycle.
         public bool AddEdge(int fromVal, int toVal)
         {
             AddToSet(fromVal,toVal);

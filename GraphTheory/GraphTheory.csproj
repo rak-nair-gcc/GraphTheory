@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\DisjointSet.cs" />
+    <Compile Include="Algorithms\KruskalAlgo.cs" />
+    <Compile Include="Common\CommonClasses.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
