@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using GraphTheory.Common;
 
 namespace GraphTheory.Algorithms
 {
@@ -11,29 +12,29 @@ namespace GraphTheory.Algorithms
     //u is the pre-requisite for v.
     public class TopologicalSort
     {
-        List<Common.Edge> _edges;
+        List<SharedClasses.IEdge> _edges;
         Dictionary<int, List<int>> _adj;
         HashSet<int> _seen;
 
-        public TopologicalSort(List<Common.Edge> edges)
+        public TopologicalSort(List<SharedClasses.IEdge> edges)
         {
             _edges = edges;
-            BuildAdjList();
+            _adj = Helper.BuildAdjList(edges);
         }
 
-        void BuildAdjList()
-        {
-            _adj = new Dictionary<int, List<int>>();
-            foreach (var edge in _edges)
-            {
-                if(!_adj.ContainsKey(edge.FromNode))
-                    _adj.Add(edge.FromNode,new List<int>());
-                if (!_adj.ContainsKey(edge.ToNode))
-                    _adj.Add(edge.ToNode, new List<int>());
+        //void BuildAdjList()
+        //{
+        //    _adj = new Dictionary<int, List<int>>();
+        //    foreach (var edge in _edges)
+        //    {
+        //        if(!_adj.ContainsKey(edge.FromNode))
+        //            _adj.Add(edge.FromNode,new List<int>());
+        //        if (!_adj.ContainsKey(edge.ToNode))
+        //            _adj.Add(edge.ToNode, new List<int>());
 
-                _adj[edge.FromNode].Add(edge.ToNode);
-            }
-        }
+        //        _adj[edge.FromNode].Add(edge.ToNode);
+        //    }
+        //}
         //O(V+E)
         public List<int> GetToplogicalSort()
         {

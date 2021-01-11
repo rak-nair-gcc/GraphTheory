@@ -1,6 +1,6 @@
-﻿namespace GraphTheory
+﻿namespace GraphTheory.Common
 {
-    public class Common
+    public class SharedClasses
     {
         public interface IEdge
         {
@@ -8,7 +8,12 @@
             int ToNode { get; set; }
         }
 
-        public class EdgeWithWeight : IEdge
+        public interface IEdgeWithWeight:IEdge
+        {
+            int Weight { get; set; }
+        }
+
+        public class EdgeWithWeight : IEdgeWithWeight
         {
             public int FromNode { get; set; }
             public int ToNode { get; set; }

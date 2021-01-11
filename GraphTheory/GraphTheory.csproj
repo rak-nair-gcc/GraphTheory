@@ -44,9 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\DisjointSet.cs" />
+    <Compile Include="Algorithms\Dijkstra.cs" />
     <Compile Include="Algorithms\KruskalAlgo.cs" />
     <Compile Include="Algorithms\TopologicalSort.cs" />
     <Compile Include="Common\CommonClasses.cs" />
+    <Compile Include="Common\Helper.cs" />
+    <Compile Include="Common\IndexedMinPQ.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

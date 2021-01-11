@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static GraphTheory.Common;
+using GraphTheory.Common;
 
 namespace GraphTheory.Algorithms
 {
@@ -14,18 +14,18 @@ namespace GraphTheory.Algorithms
     //ElogE + E 
     public class KruskalAlgo
     {
-        List<EdgeWithWeight> _edges;
+        List<SharedClasses.IEdgeWithWeight> _edges;
         DisjointSet _set;
 
-        public KruskalAlgo(List<EdgeWithWeight> edges)
+        public KruskalAlgo(List<SharedClasses.IEdgeWithWeight> edges)
         {
             _edges = edges;
             _set = new DisjointSet();
         }
 
-        public List<EdgeWithWeight> GetMinSpanningTree()
+        public List<SharedClasses.IEdgeWithWeight> GetMinSpanningTree()
         {
-            var result = new List<EdgeWithWeight>();
+            var result = new List<SharedClasses.IEdgeWithWeight>();
 
             SortEdgeList();
 
@@ -40,7 +40,8 @@ namespace GraphTheory.Algorithms
 
         void SortEdgeList()
         {
-            _edges.Sort(Comparer<EdgeWithWeight>.Create((x, y) => { return x.Weight.CompareTo(y.Weight); }));
+            _edges.Sort(Comparer<SharedClasses.IEdgeWithWeight>.Create((x, y) => { return x.Weight.CompareTo(y.Weight); }));
         }
+
     }
 }
