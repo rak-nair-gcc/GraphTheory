@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\BellmanFord.cs" />
     <Compile Include="Algorithms\DisjointSet.cs" />
     <Compile Include="Algorithms\Dijkstra.cs" />
     <Compile Include="Algorithms\KruskalAlgo.cs" />
+    <Compile Include="Algorithms\TarjansAlgo.cs" />
     <Compile Include="Algorithms\TopologicalSort.cs" />
     <Compile Include="Common\CommonClasses.cs" />
     <Compile Include="Common\Helper.cs" />

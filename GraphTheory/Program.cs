@@ -85,8 +85,51 @@ namespace GraphTheory
             };
 
             var dijkstra = new Dijkstra(edgesForDijkstra,0);
-            var resultFromDijkstra = dijkstra.GetMinPath();
+            //var resultFromDijkstra = dijkstra.GetMinPath();
 
+            var bellmanFord = new BellmanFord(edgesForDijkstra,0);
+            //var resultFromBellmanFord = bellmanFord.GetMinPath();
+
+
+            var edgesForTarjansSCC = new List<IEdge>
+            {
+                new Edge {FromNode = 0, ToNode = 1},
+                new Edge {FromNode = 0, ToNode = 2},
+                new Edge {FromNode = 1, ToNode = 3},
+                new Edge {FromNode = 3, ToNode = 4},
+                new Edge {FromNode = 4, ToNode = 5},
+                new Edge {FromNode = 5, ToNode = 2},
+                new Edge {FromNode = 2, ToNode = 1},
+                //new Edge {FromNode = 5, ToNode = 0},
+            };
+            var tarjans = new TarjansAlgo(edgesForTarjansSCC);
+            //var scc = tarjans.GetStronglyConnectedComponents();
+
+
+            var edgesForTarjansBridges = new List<IEdge>
+            {
+                new Edge {FromNode = 0, ToNode = 1},
+                new Edge {FromNode = 1, ToNode = 0},
+                new Edge {FromNode = 0, ToNode = 2},
+                new Edge {FromNode = 2, ToNode = 0},
+                new Edge {FromNode = 1, ToNode = 2},
+                new Edge {FromNode = 2, ToNode = 1},
+                new Edge {FromNode = 2, ToNode = 3},
+                new Edge {FromNode = 3, ToNode = 2},
+                new Edge {FromNode = 3, ToNode = 4},
+                new Edge {FromNode = 4, ToNode = 3},
+                new Edge {FromNode = 4, ToNode = 5},
+                new Edge {FromNode = 5, ToNode = 4},
+                new Edge {FromNode = 5, ToNode = 6},
+                new Edge {FromNode = 6, ToNode = 5},
+                new Edge {FromNode = 4, ToNode = 6},
+                new Edge {FromNode = 6, ToNode = 4},
+                new Edge {FromNode = 5, ToNode = 7},
+                new Edge {FromNode = 7, ToNode = 5},
+                //new Edge {FromNode = 5, ToNode = 0},
+            };
+            tarjans = new TarjansAlgo(edgesForTarjansBridges);
+            var bridges = tarjans.GetBridgesAndArticulationPoints();
         }
     }
 }
