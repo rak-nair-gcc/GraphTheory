@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace GraphTheory.Algorithms
 {
+    //DFS O(V+E), track DiscoveryTime and EarliestAccessibleNode for each node.
     public class TarjansAlgo
     {
         int _time;
@@ -22,11 +23,6 @@ namespace GraphTheory.Algorithms
         {
             _edges = edges;
             _adj = Helper.BuildAdjList(_edges);
-            Initialise();
-        }
-
-        void Initialise()
-        {
             _time = 0;
             _parents = new Dictionary<int, int>();
             _nodeDict = new Dictionary<int, NodeDiscAndLow>();
@@ -40,7 +36,6 @@ namespace GraphTheory.Algorithms
 
         public List<List<int>> GetStronglyConnectedComponents()
         {
-            Initialise();
             foreach (var node in _adj.Keys)
             {
                 if (!_nodeDict.ContainsKey(node))
@@ -51,7 +46,6 @@ namespace GraphTheory.Algorithms
 
         public Tuple<HashSet<int>,List<SharedClasses.IEdge>> GetBridgesAndArticulationPoints()
         {
-            Initialise();
             foreach (var node in _adj.Keys)
             {
                 if (!_nodeDict.ContainsKey(node))
@@ -105,7 +99,7 @@ namespace GraphTheory.Algorithms
                 if (_nodeDict.ContainsKey(nbor)) //Already processed
                 {
                     if (_inStack.Contains(nbor)) //BackEdge, ignore cross edges
-                    {
+                    {//For BE u->v, EAN (Earliest Accessible Node) is Min(u.EAN,v.DiscoveryTime)
                         _nodeDict[node].EarliestAccessibleNode =
                             Math.Min(_nodeDict[node].EarliestAccessibleNode, _nodeDict[nbor].DiscoveryTime);
                     }

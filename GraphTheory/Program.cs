@@ -103,7 +103,7 @@ namespace GraphTheory
                 //new Edge {FromNode = 5, ToNode = 0},
             };
             var tarjans = new TarjansAlgo(edgesForTarjansSCC);
-            //var scc = tarjans.GetStronglyConnectedComponents();
+            var scc = tarjans.GetStronglyConnectedComponents();
 
 
             var edgesForTarjansBridges = new List<IEdge>
